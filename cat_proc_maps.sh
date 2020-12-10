@@ -10,6 +10,10 @@ then
         then
             continue
         fi
+        if [ $pid -eq $$ ];
+        then
+            continue
+        fi
         cat /proc/$pid/maps | grep $1 2>&1 > /dev/null
         if [ $? -eq 0 ];
         then
