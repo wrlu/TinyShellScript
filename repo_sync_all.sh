@@ -20,7 +20,7 @@ then
         do
             if [ -d $file ]
             then
-                (cd $1"/"$file; repo sync > ../sync_"$file".log 2>&1 &)
+                (cd $1"/"$file; repo sync 2>&1 > ../sync_"$file".log &)
             else
                 echo "Skip file $file"
             fi
