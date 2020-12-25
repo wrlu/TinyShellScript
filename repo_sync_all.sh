@@ -26,11 +26,11 @@ then
             fi
         done
     else
-        echo "Wrong parameters, usage: repo_sync_all.sh folder [-b]."
+        echo "repo_sync_all.sh: Wrong parameters, usage: repo_sync_all.sh folder [-b]."
         echo "Tips: You can use -b parameter to sync in background."
     fi
 else
-    echo "Missing parameters, usage: repo_sync_all.sh folder [-b]."
+    echo "repo_sync_all.sh: Missing parameters, usage: repo_sync_all.sh folder [-b]."
     echo "Tips: You can use -b parameter to sync in background & muti-thread."
 fi
 echo "Exit..."

@@ -1,9 +1,7 @@
 #!/bin/bash
 if [ $# -eq 1 ];
 then
-    echo "Start..."
-    echo "LABEL USER    UID PID CMD"
-    maxpid=$(cat /proc/sys/kernel/pid_max)
+    ps -AZ -p 1 -o USER,UID,PID,PPID,NAME | grep LABEL
     for pid in $(ps -Ao PID)
     do
         if [ "$pid" == "PID" ];
@@ -17,10 +15,9 @@ then
         cat /proc/$pid/maps | grep $1 2>&1 > /dev/null
         if [ $? -eq 0 ];
         then
-            ps -AZ -o USER,UID,PID,ARGS=CMD | grep $pid | grep -v "grep"
+            ps -AZ -p $pid -o USER,UID,PID,PPID,NAME | grep $pid
         fi
     done
 else
-    echo "Missing parameters, usage: cat_proc_maps.sh module_name."
+    echo "cat_proc_maps.sh: Missing parameters, usage: cat_proc_maps.sh module_name."
 fi
-echo "Exit..."
